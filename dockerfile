@@ -6,12 +6,14 @@ COPY package.json .
 
 RUN npm config set registry https://registry.npm.taobao.org
 
-RUN npm install
+RUN npm install -g pnpm
+
+RUN pnpm install
 
 COPY . .
 
-RUN npm run build
+RUN pnpm run build
 
-EXPOSE 3000
+EXPOSE 3005
 
 CMD [ "node", "./dist/main.js" ]
